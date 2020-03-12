@@ -75,6 +75,11 @@
   <script type="text/javascript" src="{% static 'data.json' %}"></script>
   <script src="{% static 'vendor/js/notify.js' %}"></script>
   <script type="text/JavaScript">
+         var audioElement = document.createElement('audio');
+                audioElement.setAttribute('src', '{% static "sounds/ring.mp3" %}');
+                audioElement.addEventListener('ended', function() {
+                    this.play();
+                }, false);   
 
         // Create the map
         var osmUrl = '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -88,6 +93,20 @@
             center: new L.LatLng(-6.952430076511351 ,107.58641839027405
                 ),
             zoom: 20
+        });
+
+         var indoorLayer = new L.Indoor(geoJSON, {
+            onEachFeature: function(feature, layer) {
+                // layer.bindPopup(JSON.stringify(feature.properties, null, 4));
+                layer.bindPopup('Ruangan '+JSON.stringify(feature.properties, null, 4)+'<br>'+
+                // JSON.stringify(feature.properties['name'])
+                '<button onclick="UpdateStatus('+feature.properties["name"]+')">Reset</button>'
+                // 
+                // if(feature.properties['name'] === "1"){
+                //     '<button onclick="UpdateStatus('+feature.properties["name"]+')">Reset</button>'
+                // }
+                );
+            }
         });
 
         function UpdateStatus(room)
@@ -107,41 +126,25 @@
             },
             success: function(response){
               // $('#alert-button-'+item.room).css('background-color','transparent')
-              // audio.pause();
-              var audioElement = document.createElement('audio');
-              audioElement.setAttribute('src', '{% static "sounds/ring.mp3" %}');
-              audioElement.addEventListener('ended', function() {
-                  this.play();
-              }, false);        
+              // audio.pause();       
               audioElement.pause();
+              console.log('sukses')
             }
-        }),
-        $.ajax({
-            url:'http://192.168.20.150:8001/',
-            type: 'POST',
-            data: JSON.stringify({
-              "room": room,
-              "status": 0,
-            }),
-            dataType:'json',
-            success: function(response){
-            }
-          })
+        })
+        // ,
+        // $.ajax({
+        //     url:'http://192.168.20.150:8001/',
+        //     type: 'POST',
+        //     data: JSON.stringify({
+        //       "room": room,
+        //       "status": 0,
+        //     }),
+        //     dataType:'json',
+        //     success: function(response){
+        //     }
+        //   })
         }
       
-         var indoorLayer = new L.Indoor(geoJSON, {
-            onEachFeature: function(feature, layer) {
-                // layer.bindPopup(JSON.stringify(feature.properties, null, 4));
-                layer.bindPopup('Ruangan '+JSON.stringify(feature.properties, null, 4)+'<br>'+
-                '<button onclick="UpdateStatus('+feature.properties["name"]+')">Reset</button>'
-
-                // 
-                // if(feature.properties['name'] === "1"){
-                //     '<button onclick="UpdateStatus('+feature.properties["name"]+')">Reset</button>'
-                // }
-                );
-            }
-        });
 
         indoorLayer.addTo(map);
 
@@ -159,11 +162,7 @@
             function () {
             $.get("http://127.0.0.1:8000/getroom/", function (data) {
                 var rooms = [];
-                var audioElement = document.createElement('audio');
-                audioElement.setAttribute('src', '{% static "sounds/ring.mp3" %}');
-                audioElement.addEventListener('ended', function() {
-                    this.play();
-                }, false);   
+               
                 $.each(data, function (i, item) {
                  
                   if (item.status === "1") {
