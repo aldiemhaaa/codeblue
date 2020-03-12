@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INDEX || MYSMS</title>
+    <link href="{% static 'vendor/css/bootstrap.min.css' %}" rel="stylesheet">
+    <script src="{% static 'vendor/js/jquery-3.4.1.js' %}"></script>
+</head>
+<body>
+<div class="container">
+    <h4 class="text-center" id='tblroom'>Ruangan</h4>
+    <table class="table text-center" id="room-table">
+        <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">room</th>
+              <th scope="col">status</th>
+              <th scope="col">Opsi</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for room in room_id %}
+    
+          <tr id="alert-button-{{room.room}}">
+            <th scope="row">{{room.id}}</th>
+            <td id="alarm-{{room.room}}">{{room.room}}</td>
+            <td id="status-room-{{room.room}}">{{room.status}}</td>
+            <td><button id="btn-post-{{room.room}}">Reset</button></td>
+          </tr>
+    
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+
+
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'vendor/js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

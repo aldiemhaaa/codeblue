@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Indoor Map Example</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
+
+    <!--[if lte IE 8]><link rel="stylesheet" href="libs/leaflet.ie.css" /><![endif]-->
+
+    <style type="text/css">
+        body {
+          padding: 0;
+          margin: 0;
+        }
+
+        html, body, #map {
+          height: 100%;
+        }
+
+        .info {
+            width: 150px;
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255,255,255,1);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script src="{% static 'vendor/js/jquery-3.4.1.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
+    <script src="{% static 'js/leafflat-indoor.js' %}"></script>
+    <script type="text/javascript" src="{% static 'data.json' %}"></script>
+    
+    <script type="text/JavaScript">
+
+        // Create the map
+        var osmUrl = '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            osm = new L.TileLayer(osmUrl, {
+                maxZoom: 22,
+                attribution: "Map data &copy; OpenStreetMap contributors"
+            });
+
+        var map = new L.Map('map', {
+            layers: [osm],
+            center: new L.LatLng(-6.952430076511351 ,107.58641839027405
+                ),
+            zoom: 20
+        });
+
+        // This example uses a GeoJSON FeatureCollection saved to a file
+        // (data.json), see the other example (live/index.html) for details on
+        // fetching data using the OverpassAPI (this is also how the data in
+        // data.json was generated)
+
+
+        var indoorLayer = new L.Indoor(geoJSON, {
+            onEachFeature: function(feature, layer) {
+                layer.bindPopup(JSON.stringify(feature.properties, null, 4));
+            }
+        });
+
+        indoorLayer.addTo(map);
+
+        var levelControl = new L.Control.Level({
+            level: "0",
+            levels: indoorLayer.getLevels(),
+            indoorLayer: indoorLayer
+        });
+
+        // Connect the level control to the indoor layer
+
+        levelControl.addTo(map);
+
+        setInterval(
+            function () {
+            $.get("http://127.0.0.1:8000/getroom/", function (data) {
+                var rooms = [];
+                $.each(data, function (i, item) {
+                  if (item.status === "1") {
+                      rooms.push(item);
+                      $.each(indoorLayer._layers[1]._layers, function(j, jitem) {
+                        //console.log(jitem.feature.properties.name);
+                        if (jitem.feature.properties.name==item.room) {
+                           // console.log(jitem);
+                            jitem.setStyle({fillColor :'red', "fillOpacity": 1});
+                        }
+                      })
+                  }
+                });
+               // indoorLayer.eachLayer(function (layer) {  
+               //   for(i=0;i<rooms.length;i++) {
+               //     if(layer.feature.properties.name == rooms[i].room) {    
+               //         layer.setStyle({fillColor :'red'}) 
+               //     }
+               //   }  
+                //});
+            })
+            },
+            5000  /* 10000 ms = 10 sec */
+          );
+    </script>
+</body>
+</html>
