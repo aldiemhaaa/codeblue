@@ -244,7 +244,8 @@ var geoJSON = {
         "level": 1,
         "fill": "#555555",
         "fill-opacity": 0.5,
-        "id": 507
+        "id": 507,
+        "name": 507
       },
       "geometry": {
         "type": "Polygon",
@@ -323,7 +324,8 @@ var geoJSON = {
         "fill": "#555555",
         "level": 1,
         "fill-opacity": 0.5,
-        "id": 510
+        "id": 510,
+        "name": 510
       },
       "geometry": {
         "type": "Polygon",
@@ -362,7 +364,8 @@ var geoJSON = {
         "fill": "#555555",
         "level": 1,
         "fill-opacity": 0.5,
-        "id": 509
+        "id": 509,
+        "name":509
       },
       "geometry": {
         "type": "Polygon",
@@ -401,7 +404,8 @@ var geoJSON = {
         "fill": "#555555",
         "level": 1,
         "fill-opacity": 0.5,
-        "id": 508
+        "id": 508,
+        "name":508
       },
       "geometry": {
         "type": "Polygon",
@@ -440,7 +444,8 @@ var geoJSON = {
         "fill": "#555555",
         "level": 1,
         "fill-opacity": 0.5,
-        "id": 512
+        "id": 512,
+        "name":512
       },
       "geometry": {
         "type": "Polygon",
@@ -479,7 +484,8 @@ var geoJSON = {
         "fill": "#555555",
         "level": 1,
         "fill-opacity": 0.5,
-        "id": 511
+        "id": 511,
+        "name":511
       },
       "geometry": {
         "type": "Polygon",
@@ -518,7 +524,8 @@ var geoJSON = {
         "fill": "#555555",
         "level": 1,
         "fill-opacity": 0.5,
-        "id": 513
+        "id": 513,
+        "name":513
       },
       "geometry": {
         "type": "Polygon",
@@ -557,7 +564,8 @@ var geoJSON = {
         "fill": "#555555",
         "level": 1,
         "fill-opacity": 0.5,
-        "id": 514
+        "id": 514,
+        "name":514
       },
       "geometry": {
         "type": "Polygon",
@@ -596,7 +604,8 @@ var geoJSON = {
         "fill": "#555555",
         "level": 1,
         "fill-opacity": 0.5,
-        "id": 515
+        "id": 515,
+        "name":515
       },
       "geometry": {
         "type": "Polygon",
@@ -635,7 +644,8 @@ var geoJSON = {
         "fill": "#555555",
         "level": 1,
         "fill-opacity": 0.5,
-        "id": 519
+        "id": 519,
+        "name":519
       },
       "geometry": {
         "type": "Polygon",
@@ -674,7 +684,8 @@ var geoJSON = {
         "fill": "#555555",
         "level": 1,
         "fill-opacity": 0.5,
-        "id": 520
+        "id": 520,
+        "name":520
       },
       "geometry": {
         "type": "Polygon",
@@ -713,7 +724,8 @@ var geoJSON = {
         "fill": "#555555",
         "level": 1,
         "fill-opacity": 0.5,
-        "id": 521
+        "id": 521,
+        "name":521
       },
       "geometry": {
         "type": "Polygon",
@@ -752,7 +764,8 @@ var geoJSON = {
         "fill": "#555555",
         "level": 1,
         "fill-opacity": 0.5,
-        "id": 516
+        "id": 516,
+        "name": 516
       },
       "geometry": {
         "type": "Polygon",
@@ -791,7 +804,8 @@ var geoJSON = {
         "fill": "#555555",
         "level": 1,
         "fill-opacity": 0.5,
-        "id": 517
+        "id": 517,
+        "name":517
       },
       "geometry": {
         "type": "Polygon",
@@ -830,7 +844,8 @@ var geoJSON = {
         "fill": "#555555",
         "level": 1,
         "fill-opacity": 0.5,
-        "id": 518
+        "id": 518,
+        "name":518
       },
       "geometry": {
         "type": "Polygon",

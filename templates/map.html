@@ -98,7 +98,7 @@
          var indoorLayer = new L.Indoor(geoJSON, {
             onEachFeature: function(feature, layer) {
                 // layer.bindPopup(JSON.stringify(feature.properties, null, 4));
-                layer.bindPopup('Ruangan '+JSON.stringify(feature.properties, null, 4)+'<br>'+
+                layer.bindPopup('Ruangan '+JSON.stringify(feature.properties['name'])+'<br>'+
                 // JSON.stringify(feature.properties['name'])
                 '<button onclick="UpdateStatus('+feature.properties["name"]+')">Reset</button>'
                 // 
