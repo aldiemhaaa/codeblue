@@ -112,7 +112,7 @@
         function UpdateStatus(room)
         {
             $.ajax({
-            url:'http://localhost:8000/updateroom/',
+            url:'http://192.168.1.20:8000/updateroom/',
             type: 'POST',
             data: JSON.stringify({
               "room": room,
@@ -133,7 +133,7 @@
         })
         ,
         $.ajax({
-            url:'http://192.168.20.150:8001/',
+            url:'http://192.168.1.150:8001/',
             type: 'POST',
             data: JSON.stringify({
               "room": room,
@@ -160,7 +160,7 @@
      
         setInterval(
             function () {
-            $.get("http://127.0.0.1:8000/getroom/", function (data) {
+            $.get("http://192.168.1.20:8000/getroom/", function (data) {
                 var rooms = [];
                
                 $.each(data, function (i, item) {

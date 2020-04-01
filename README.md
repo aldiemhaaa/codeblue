@@ -16,4 +16,4 @@ Installations :
 
 Django will run the server in localhost port 8000
 
-- open Browser >> type : localhost:8000/map/
+- open Browser >> type : localhost:8000
