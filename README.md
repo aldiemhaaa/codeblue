@@ -19,6 +19,6 @@ search variable :
 
 - in cmd shell type >> python manage.py runserver or python manage.py runserver x.x.x.x:port (your local ipaddress : port )
 
-Django will run the server in localhost port 8000
+Django will run the server in localhost port 8000 ( default django is port 8000)
 
 - open Browser >> type : localhost:8000
