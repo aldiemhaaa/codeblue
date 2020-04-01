@@ -75,6 +75,15 @@
   <script type="text/javascript" src="{% static 'data.json' %}"></script>
   <script src="{% static 'vendor/js/notify.js' %}"></script>
   <script type="text/JavaScript">
+    // ipaddress localhost
+    var ipLocal = 'http://192.168.1.10/' // ganti sesuai dengan local ini
+
+    // ipaddress localhost updateroom
+
+    var updateIpLocal = 'http://192.168.1.20:8000/updateroom/' // api ke local
+
+    // ipaddress ke pak parwito 
+    var ipClient = 'http://192.168.1.150:8001/' // ganti sesuai dengan client
          var audioElement = document.createElement('audio');
                 audioElement.setAttribute('src', '{% static "sounds/ring.mp3" %}');
                 audioElement.addEventListener('ended', function() {
@@ -112,7 +121,7 @@
         function UpdateStatus(room)
         {
             $.ajax({
-            url:'http://192.168.1.20:8000/updateroom/',
+            url: ipLocal + 'updateroom/',
             type: 'POST',
             data: JSON.stringify({
               "room": room,
@@ -133,7 +142,7 @@
         })
         ,
         $.ajax({
-            url:'http://192.168.1.150:8001/',
+            url: ipClient,
             type: 'POST',
             data: JSON.stringify({
               "room": room,
@@ -160,7 +169,7 @@
      
         setInterval(
             function () {
-            $.get("http://192.168.1.20:8000/getroom/", function (data) {
+            $.get(ipLocal +"getroom/", function (data) {
                 var rooms = [];
                
                 $.each(data, function (i, item) {
