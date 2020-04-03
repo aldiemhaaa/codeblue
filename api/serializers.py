@@ -9,6 +9,11 @@ class roomSerializer(serializers.ModelSerializer):
         model = room
         fields = ['id', 'room', 'status', 'date_status']
 
+class roomSerializerClient(serializers.ModelSerializer):
+    class Meta:
+        model = room
+        fields = ['room', 'status']
+
 
 class logSerializer(serializers.ModelSerializer):
     class Meta:

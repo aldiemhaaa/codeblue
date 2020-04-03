@@ -9,5 +9,6 @@ urlpatterns = [
     path('getlog/',views.getlog),
     path('map/', views.index),
     path('', views.map),
+    path('loadroom/', views.loadroom),
     # path('ajaxupdate/',views.ajaxupdate),
 ]

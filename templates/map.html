@@ -76,11 +76,11 @@
   <script src="{% static 'vendor/js/notify.js' %}"></script>
   <script type="text/JavaScript">
     // ipaddress localhost
-    var ipLocal = 'http://192.168.1.10/' // ganti sesuai dengan local ini
+    var ipLocal = 'http://192.168.1.8:8000/' // ganti sesuai dengan local ini
 
     // ipaddress localhost updateroom
 
-    var updateIpLocal = 'http://192.168.1.20:8000/updateroom/' // api ke local
+    var updateIpLocal = 'http://127.0.0.1:8000/updateroom/' // api ke local
 
     // ipaddress ke pak parwito 
     var ipClient = 'http://192.168.1.150:8001/' // ganti sesuai dengan client
@@ -121,7 +121,7 @@
         function UpdateStatus(room)
         {
             $.ajax({
-            url: ipLocal + 'updateroom/',
+            url: 'http://192.168.1.8:8000/updateroom/',
             type: 'POST',
             data: JSON.stringify({
               "room": room,
@@ -140,18 +140,6 @@
               console.log('sukses')
             }
         })
-        ,
-        $.ajax({
-            url: ipClient,
-            type: 'POST',
-            data: JSON.stringify({
-              "room": room,
-              "status": 0,
-            }),
-            dataType:'json',
-            success: function(response){
-            }
-          })
         }
       
 
